@@ -1,6 +1,6 @@
 ================================================================
   SAUCEDEMO — QA TEST PLAN
-  Prepared by: [Your Name]
+  Prepared by: [taha barakat]
   Site: https://www.saucedemo.com
   Date: [Today's Date]
   Version: 1.0
