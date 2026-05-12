@@ -1,0 +1,478 @@
+================================================================
+  SAUCEDEMO — WRITTEN TEST CASES
+  Prepared by: [Your Name]
+  Site: https://www.saucedemo.com
+================================================================
+
+
+================================================================
+  SECTION 1 — LOGIN
+================================================================
+
+TC-01: Valid login with correct credentials
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  Browser is open, user is on the login page
+
+Steps:
+  1. Go to https://www.saucedemo.com
+  2. Enter username: standard_user
+  3. Enter password: secret_sauce
+  4. Click the Login button
+
+Expected result:
+  - User is redirected to the inventory page (/inventory.html)
+  - No error messages are shown
+
+
+----------------------------------------------------------------
+
+TC-02: Login with wrong password
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  Browser is open, user is on the login page
+
+Steps:
+  1. Go to https://www.saucedemo.com
+  2. Enter username: standard_user
+  3. Enter password: wrongpassword
+  4. Click the Login button
+
+Expected result:
+  - User stays on the login page
+  - An error message is displayed
+
+
+----------------------------------------------------------------
+
+TC-03: Login with wrong username
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  Browser is open, user is on the login page
+
+Steps:
+  1. Go to https://www.saucedemo.com
+  2. Enter username: fakeuser123
+  3. Enter password: secret_sauce
+  4. Click the Login button
+
+Expected result:
+  - User stays on the login page
+  - An error message is displayed
+
+
+----------------------------------------------------------------
+
+TC-04: Login with empty fields
+-------------------------------------------------
+Type:          Negative
+Priority:      P2
+Precondition:  Browser is open, user is on the login page
+
+Steps:
+  1. Go to https://www.saucedemo.com
+  2. Leave username and password fields empty
+  3. Click the Login button
+
+Expected result:
+  - User stays on the login page
+  - A validation error message is displayed
+
+
+----------------------------------------------------------------
+
+TC-05: Locked out user is blocked
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  Browser is open, user is on the login page
+
+Steps:
+  1. Go to https://www.saucedemo.com
+  2. Enter username: locked_out_user
+  3. Enter password: secret_sauce
+  4. Click the Login button
+
+Expected result:
+  - User stays on the login page
+  - Error message contains the word "locked out"
+
+
+----------------------------------------------------------------
+
+TC-06: Login page elements are visible on load
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  Browser is open
+
+Steps:
+  1. Go to https://www.saucedemo.com
+
+Expected result:
+  - Username field is visible
+  - Password field is visible
+  - Login button is visible
+
+
+================================================================
+  SECTION 2 — PRODUCT LISTING
+================================================================
+
+TC-07: All 6 products display after login
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in as standard_user
+
+Steps:
+  1. Log in with standard_user / secret_sauce
+  2. Observe the inventory page
+
+Expected result:
+  - Exactly 6 product cards are displayed
+  - Each card shows a name, price, image, and Add to Cart button
+
+
+----------------------------------------------------------------
+
+TC-08: Sort products by price low to high
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click the sort dropdown
+  2. Select "Price (low to high)"
+
+Expected result:
+  - Products are reordered from cheapest to most expensive
+  - First product has the lowest price
+
+
+----------------------------------------------------------------
+
+TC-09: Sort products by price high to low
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click the sort dropdown
+  2. Select "Price (high to low)"
+
+Expected result:
+  - Products are reordered from most expensive to cheapest
+  - First product has the highest price
+
+
+----------------------------------------------------------------
+
+TC-10: Sort products by name A to Z
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click the sort dropdown
+  2. Select "Name (A to Z)"
+
+Expected result:
+  - Products are sorted alphabetically A to Z
+
+
+----------------------------------------------------------------
+
+TC-11: Clicking a product opens its detail page
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click on any product name
+
+Expected result:
+  - User is taken to the product detail page
+  - URL contains "inventory-item"
+
+
+----------------------------------------------------------------
+
+TC-12: Product detail page shows all required info
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is logged in, clicked on a product
+
+Steps:
+  1. Click on any product name from the inventory page
+
+Expected result:
+  - Product name is visible
+  - Product description is visible
+  - Product price is visible
+  - Add to Cart button is visible
+
+
+================================================================
+  SECTION 3 — SHOPPING CART
+================================================================
+
+TC-13: Adding an item updates the cart badge
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click Add to Cart on any product
+
+Expected result:
+  - Cart icon badge appears and shows the number 1
+
+
+----------------------------------------------------------------
+
+TC-14: Add to Cart button changes to Remove
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in, on the inventory page
+
+Steps:
+  1. Click Add to Cart on any product
+
+Expected result:
+  - The button text changes from "Add to Cart" to "Remove"
+
+
+----------------------------------------------------------------
+
+TC-15: Removing an item resets the cart badge
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in, one item already added to cart
+
+Steps:
+  1. Click the Remove button on an added product
+
+Expected result:
+  - Cart badge disappears or resets to 0
+  - Button text changes back to "Add to Cart"
+
+
+----------------------------------------------------------------
+
+TC-16: Added item appears in the cart page
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in, one item added to cart
+
+Steps:
+  1. Click Add to Cart on a product (note the product name)
+  2. Click the cart icon
+
+Expected result:
+  - Cart page opens
+  - The same product name and price are shown in the cart
+
+
+----------------------------------------------------------------
+
+TC-17: Cart is empty when no items added
+-------------------------------------------------
+Type:          Negative
+Priority:      P2
+Precondition:  User is logged in, no items added
+
+Steps:
+  1. Click the cart icon without adding any product
+
+Expected result:
+  - Cart page opens
+  - No items are listed
+  - Cart badge is not visible
+
+
+----------------------------------------------------------------
+
+TC-18: Continue Shopping returns to inventory
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User is on the cart page
+
+Steps:
+  1. Click the "Continue Shopping" button
+
+Expected result:
+  - User is taken back to the inventory page
+
+
+================================================================
+  SECTION 4 — CHECKOUT
+================================================================
+
+TC-19: Full checkout flow completes successfully
+-------------------------------------------------
+Type:          E2E
+Priority:      P1
+Precondition:  User is logged in
+
+Steps:
+  1. Add any product to the cart
+  2. Click the cart icon
+  3. Click Checkout
+  4. Enter First Name: Test
+  5. Enter Last Name: User
+  6. Enter Zip Code: 12345
+  7. Click Continue
+  8. Click Finish
+
+Expected result:
+  - Order confirmation page is shown
+  - Success message is displayed
+
+
+----------------------------------------------------------------
+
+TC-20: Checkout fails with empty first name
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  User has item in cart, is on checkout step 1
+
+Steps:
+  1. Leave First Name empty
+  2. Enter Last Name: User
+  3. Enter Zip Code: 12345
+  4. Click Continue
+
+Expected result:
+  - Error message says First Name is required
+  - User stays on checkout step 1
+
+
+----------------------------------------------------------------
+
+TC-21: Checkout fails with empty last name
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  User has item in cart, is on checkout step 1
+
+Steps:
+  1. Enter First Name: Test
+  2. Leave Last Name empty
+  3. Enter Zip Code: 12345
+  4. Click Continue
+
+Expected result:
+  - Error message says Last Name is required
+  - User stays on checkout step 1
+
+
+----------------------------------------------------------------
+
+TC-22: Checkout fails with empty zip code
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  User has item in cart, is on checkout step 1
+
+Steps:
+  1. Enter First Name: Test
+  2. Enter Last Name: User
+  3. Leave Zip Code empty
+  4. Click Continue
+
+Expected result:
+  - Error message says Postal Code is required
+  - User stays on checkout step 1
+
+
+----------------------------------------------------------------
+
+TC-23: Order summary shows correct price and total
+-------------------------------------------------
+Type:          Positive
+Priority:      P2
+Precondition:  User filled checkout info, is on order summary page
+
+Steps:
+  1. Add a product to cart (note the price)
+  2. Complete checkout step 1 with valid info
+  3. Observe the order summary page
+
+Expected result:
+  - Item price matches the price from the inventory page
+  - Tax amount is shown
+  - Total = item price + tax
+
+
+----------------------------------------------------------------
+
+TC-24: Cancel checkout returns user to cart
+-------------------------------------------------
+Type:          Negative
+Priority:      P2
+Precondition:  User has item in cart, is on checkout step 1
+
+Steps:
+  1. Click the Cancel button on checkout step 1
+
+Expected result:
+  - User is returned to the cart page
+  - The item is still in the cart
+
+
+================================================================
+  SECTION 5 — LOGOUT
+================================================================
+
+TC-25: Logout via burger menu works
+-------------------------------------------------
+Type:          Positive
+Priority:      P1
+Precondition:  User is logged in
+
+Steps:
+  1. Click the burger menu icon (top left)
+  2. Click Logout
+
+Expected result:
+  - User is redirected to the login page
+  - Session is ended
+
+
+----------------------------------------------------------------
+
+TC-26: Logged out user cannot access inventory directly
+-------------------------------------------------
+Type:          Negative
+Priority:      P1
+Precondition:  User is NOT logged in
+
+Steps:
+  1. Without logging in, go to:
+     https://www.saucedemo.com/inventory.html
+
+Expected result:
+  - User is redirected back to the login page
+  - Inventory page is NOT accessible
+
+
+================================================================
+  END OF TEST CASES
+  Total: 26 test cases
+  Sections: Login (6), Products (6), Cart (6), Checkout (5), Logout (2)
+================================================================

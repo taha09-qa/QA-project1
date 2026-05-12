@@ -1,0 +1,119 @@
+================================================================
+  SAUCEDEMO — QA TEST PLAN
+  Prepared by: [Your Name]
+  Site: https://www.saucedemo.com
+  Date: [Today's Date]
+  Version: 1.0
+================================================================
+
+
+================================================================
+  1. FUNCTIONAL TESTING
+================================================================
+
+1.1 Login
+-------------------------------------------------
+  - Verify user can log in with valid credentials (standard_user / secret_sauce)
+  - Verify login fails with an incorrect password and shows an error message
+  - Verify login fails with an incorrect username and shows an error message
+  - Verify submitting empty fields shows a validation error
+  - Verify locked_out_user sees the correct locked-out error message
+  - Verify all login page elements are visible on load (username, password, button)
+
+
+1.2 Product Listing Page
+-------------------------------------------------
+  - Verify all 6 products display after login with name, price, image, and Add to Cart button
+  - Verify sorting by price low-to-high reorders products correctly
+  - Verify sorting by price high-to-low reorders products correctly
+  - Verify sorting by name A-Z reorders products correctly
+  - Verify clicking a product name opens the correct product detail page
+  - Verify product detail page shows name, description, price, and Add to Cart button
+
+
+1.3 Shopping Cart
+-------------------------------------------------
+  - Verify clicking Add to Cart adds the item and updates the cart badge count
+  - Verify the Add to Cart button changes to Remove after item is added
+  - Verify clicking Remove removes the item and resets the badge count
+  - Verify cart page shows the correct item name and price after adding
+  - Verify navigating to cart without adding items shows an empty cart
+  - Verify Continue Shopping button returns the user to the product listing page
+
+
+1.4 Checkout
+-------------------------------------------------
+  - Verify clicking Checkout from cart navigates to the checkout info page
+  - Verify submitting checkout without first name shows a required field error
+  - Verify submitting checkout without last name shows a required field error
+  - Verify submitting checkout without zip code shows a required field error
+  - Verify filling all fields and clicking Continue goes to the order summary page
+  - Verify the order summary shows the correct item, price, tax, and total
+  - Verify clicking Finish completes the order and shows a confirmation message
+  - Verify clicking Cancel on checkout step 1 returns the user to the cart
+
+
+1.5 Logout
+-------------------------------------------------
+  - Verify the burger menu opens and shows a Logout option
+  - Verify clicking Logout redirects the user to the login page
+  - Verify a logged-out user cannot access /inventory.html directly (redirected to login)
+
+
+================================================================
+  2. UI & VISUAL CHECKS
+================================================================
+
+  - Verify page title and logo are visible on all main pages
+  - Verify cart icon is visible and accessible from all pages
+  - Verify no broken images appear on the product listing page
+  - Verify product prices are formatted correctly (e.g., $9.99)
+  - Verify error messages are clearly visible and readable
+  - Verify the site is usable on a mobile screen width (responsive check)
+
+
+================================================================
+  3. CONTENT & SPELLING
+================================================================
+
+  - Verify all product names are spelled correctly
+  - Verify all button labels are correct (Add to Cart, Remove, Checkout, Finish)
+  - Verify the order confirmation message text is correct and complete
+  - Verify no placeholder text (e.g., Lorem Ipsum) appears anywhere
+
+
+================================================================
+  4. NEGATIVE & EDGE CASE TESTING
+================================================================
+
+  - Verify adding the same item twice does not create duplicate cart entries
+  - Verify removing an item that was not added does not cause an error
+  - Verify navigating directly to /checkout-step-one.html without a cart item behaves correctly
+  - Verify the performance_glitch_user can still log in (may load slowly — acceptable)
+  - Verify the error_user triggers expected errors on specific actions
+
+
+================================================================
+  5. OUT OF SCOPE
+================================================================
+
+  - Payment processing (no real payment gateway)
+  - Email confirmation testing
+  - Backend / database validation
+  - Load and performance testing
+
+
+================================================================
+  NOTES
+================================================================
+
+  Test environment : https://www.saucedemo.com
+  Browser          : Chrome (latest)
+  Test user        : standard_user / secret_sauce
+  Locked user      : locked_out_user / secret_sauce
+
+================================================================
+  END OF TEST PLAN
+  Total items: 40+
+  Sections: Functional (5), UI (6), Content (4), Edge Cases (5), Out of Scope (4)
+================================================================
