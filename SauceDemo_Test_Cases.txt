@@ -1,6 +1,6 @@
 ================================================================
   SAUCEDEMO — WRITTEN TEST CASES
-  Prepared by: [Your Name]
+  Prepared by: [taha barakat]
   Site: https://www.saucedemo.com
 ================================================================
 
